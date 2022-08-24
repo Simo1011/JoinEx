@@ -1,0 +1,45 @@
+﻿@model IEnumerable<JoinTwoTable.Models.City>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List  of cities</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-success"><span class="bi bi-file-earmark-plus" style="font-size: 16px; color:dimgrey;"></span>Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CityName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State.StateName)
+            </th>
+           
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CityName)
+            </td>
+           
+                <td>
+                    @Html.DisplayFor(modelItem => item.State.StateName)
+                </td>
+
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.CityId" class="btn btn-outline-info"><span class="bi bi-pencil" style="font-size: 16px; color:dimgrey;"></span>Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.CityId" class="btn btn-outline-info"><span class="bi bi-info-square" style="font-size: 16px; color:dimgrey;"></span>Details</a> |
+
+
+                    <a asp-action="Delete" asp-route-id="@item.CityId" class="btn btn-outline-danger"><span class="bi bi-trash" style="font-size: 16px; color:dimgrey;"></span>Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
